@@ -9,6 +9,8 @@ MAX_CHARS = 30
 def main():
     text = ENTRY
     assert text.strip(), "entry must not be blank"
+    assert text == text.strip(), "entry must have no surrounding whitespace"
+    assert " " not in text, "entry must be a single word"
     assert len(text) <= MAX_CHARS, f"entry is {len(text)} chars, limit is {MAX_CHARS}"
     out_dir = Path(os.environ.get("ENTRY_OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
